@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Regisztráció</title>
+  <link rel="stylesheet" href="regisztracio.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>Regisztráció</h1>
+    <form class="login-form" onsubmit="register(event)">
+      <input type="text" placeholder="Felhasználónév" required />
+      <input type="email" placeholder="Email cím" required />
+      <input type="password" placeholder="Jelszó" required />
+      <input type="password" placeholder="Jelszó újra" required />
+      <button type="submit">Regisztrál</button>
+    </form>
+    <div class="spinner" id="spinner"></div>
+    <p class="signup-link">Van már fiókod? <a href="bejelentkezes.html">Jelentkezz be</a></p>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const user = localStorage.getItem("user");
+      if (user) {
+        document.querySelector('.login-form').style.display = "none";
+        document.querySelector('h1').textContent = "Már regisztráltál!";
+        document.querySelector('.signup-link').innerHTML =
+          "Kérlek <a href='bejelentkezes.html'>jelentkezz be</a>.";
+      }
+    };
+
+    function register(event) {
+      event.preventDefault();
+
+      const inputs = document.querySelectorAll('.login-form input');
+      const username = inputs[0].value;
+      const email = inputs[1].value;
+      const password = inputs[2].value;
+      const confirmPassword = inputs[3].value;
+
+      if (password !== confirmPassword) {
+        alert("A jelszavak nem egyeznek!");
+        return;
+      }
+
+      const userData = {
+        username: username,
+        email: email,
+        password: password
+      };
+
+      localStorage.setItem("user", JSON.stringify(userData));
+      document.getElementById('spinner').style.display = 'block';
+      document.querySelector('.login-form button').disabled = true;
+
+      setTimeout(() => {
+        window.location.href = 'bejelentkezes.html';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

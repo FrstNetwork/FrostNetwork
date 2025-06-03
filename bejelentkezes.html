@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bejelentkezés</title>
+  <link rel="stylesheet" href="bejelentkezes.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>Bejelentkezés</h1>
+    <form class="login-form" onsubmit="login(event)">
+      <input type="email" placeholder="Email cím" required />
+      <input type="password" placeholder="Jelszó" required />
+      <button type="submit">Belépés</button>
+    </form>
+    <div class="spinner" id="spinner"></div>
+    <p class="signup-link">Nincs még fiókod? <a href="regisztracio.html">Regisztrálj itt</a></p>
+  </div>
+
+  <script>
+    function login(event) {
+      event.preventDefault();
+  
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (!user) {
+        alert("Még nem regisztráltál.");
+        return;
+      }
+  
+      const inputs = document.querySelectorAll('.login-form input');
+      const inputEmail = inputs[0].value;
+      const inputPassword = inputs[1].value;
+  
+      if (inputEmail === user.email && inputPassword === user.password) {
+        document.getElementById('spinner').style.display = 'block';
+        document.querySelector('.login-form button').disabled = true;
+  
+        setTimeout(() => {
+          window.location.href = 'fooldal.html';
+        }, 3000);
+      } else {
+        alert("Hibás email vagy jelszó!");
+      }
+    }
+  </script>
+</body>
+</html>
