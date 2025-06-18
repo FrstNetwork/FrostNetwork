@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-image: url('../Képek/hatter.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  line-height: 1.6;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.75);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-home {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  gap: 10px;
+  transition: border-bottom 0.3s ease;
+}
+
+.menu-home:hover {
+  border-bottom: 3px solid white;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+}
+
+.menu-center {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex: 1;
+}
+
+.menu-center a {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  padding-bottom: 5px;
+  transition: border-bottom 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.menu-center a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.menu-center a:hover::after,
+.menu-center a.active::after {
+  width: 100%;
+}
+
+main {
+  max-width: 900px;
+  margin: 80px auto 60px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.about-section h1 {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 1.2px;
+}
+
+.about-section p {
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Csapat rész */
+
+.team-section {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 35px;
+}
+
+/* Egyedi tagok */
+
+.team-member {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 25px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 12px rgba(255,255,255,0.15);
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background 0.3s ease;
+}
+
+.team-member:hover {
+  background: rgba(255, 255, 255, 0.25);
+  cursor: default;
+}
+
+.team-member h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.team-member p {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #ccc;
+}
+
+/* Manager szobák */
+
+.managers-container,
+.overseers-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.managers-container .team-member,
+.overseers-container .team-member {
+  max-width: 250px;
+  margin-bottom: 0;
+}
+
+/* Reszponzív */
+
+@media (max-width: 700px) {
+  .managers-container,
+  .overseers-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+}
